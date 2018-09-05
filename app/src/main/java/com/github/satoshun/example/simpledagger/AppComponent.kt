@@ -6,11 +6,12 @@ import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
 import javax.inject.Inject
+import javax.inject.Provider
 import kotlin.reflect.KClass
 
 @Component(modules = [HogeModule::class])
 interface AppComponent {
-  fun inject(app: App)
+  val values: Map<Class<out Any>, @JvmSuppressWildcards Provider<Any>>
 }
 
 @Module

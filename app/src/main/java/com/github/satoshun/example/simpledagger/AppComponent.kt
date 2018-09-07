@@ -16,8 +16,8 @@ interface AppComponent {
 
 @Module
 interface HogeModule {
-  @Binds @IntoMap @Key(Hoge1::class) fun bindHoge1(hoge: Hoge1): Any
-  @Binds @IntoMap @Key(Hoge2::class) fun bindHoge2(hoge: Hoge2): Any
+  @Binds @IntoMap @ClassKey(Hoge1::class) fun bindHoge1(hoge: Hoge1): Any
+  @Binds @IntoMap @ClassKey(Hoge2::class) fun bindHoge2(hoge: Hoge2): Any
 }
 
 class Hoge1 @Inject constructor()
@@ -27,4 +27,4 @@ class IllegalHoge @Inject constructor()
 @MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)
 @MapKey
-annotation class Key(val value: KClass<out Any>)
+annotation class ClassKey(val value: KClass<out Any>)
